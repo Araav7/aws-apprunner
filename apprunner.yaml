@@ -1,11 +1,9 @@
 version: 1.0
 runtime: python311
-
 build:
   commands:
     build:
       - pip install -r requirements.txt
-
 run:
   runtime-version: latest
   command: ddtrace-run gunicorn --bind 0.0.0.0:8080 --workers 1 --timeout 30 app:app
@@ -13,9 +11,15 @@ run:
     port: 8080
     env: PORT
   env:
-    # Datadog configuration - Update DD_TRACE_AGENT_URL with your agent URL
-    DD_TRACE_AGENT_URL: "http://sbd8pcfizx.ap-southeast-1.awsapprunner.com:8126"
-    DD_SERVICE: "simple-trace-app"
-    DD_ENV: "production"
-    DD_TRACE_ENABLED: "true"
-    DD_LOGS_INJECTION: "true"
+    - name: DD_TRACE_AGENT_URL
+      value: "http://sbd8pcfizx.ap-southeast-1.awsapprunner.com:8126"
+    - name: DD_SERVICE
+      value: "simple-trace-app"
+    - name: DD_ENV
+      value: "production"
+    - name: DD_TRACE_ENABLED
+      value: "true"
+    - name: DD_LOGS_INJECTION
+      value: "true"
+    - name: PORT
+      value: "8080"
