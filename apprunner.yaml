@@ -12,13 +12,13 @@ run:
     env: PORT
   env:
     - name: DD_TRACE_AGENT_URL
-      value: "http://sbd8pcfizx.ap-southeast-1.awsapprunner.internal:8126"
+      value: "https://sbd8pcfizx.ap-southeast-1.awsapprunner.com:8126"
     - name: DD_SERVICE
       value: "simple-trace-app"
     - name: DD_ENV
       value: "production"
     - name: DD_TRACE_ENABLED
-      value: "true"
+      value: "false"
     - name: DD_LOGS_INJECTION
       value: "true"
     - name: PORT
